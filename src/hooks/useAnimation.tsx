@@ -11,11 +11,11 @@ export const useAnimation = () => {
 
 
 
-  const fadeIn = () => {
+  const fadeIn = (duration = 300) => {
     Animated.timing(
       opacity, {
       toValue: 1,
-      duration: 300,
+      duration,
       useNativeDriver: true,
     }
     ).start();

@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { Header } from '../components/Header';
+import { styles } from '../theme/appTheme';
 
-export const Animated101Screen = () => {
+export const TextInputScreen = () => {
   return (
-    <View>
-      <Text>Animated 101S creen</Text>
+    <View style={styles.globalMargin}>
+      <Header title="TextInput" />
+      <Text>TextInput Screen</Text>
     </View>
   );
 };

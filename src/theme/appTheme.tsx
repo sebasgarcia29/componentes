@@ -6,11 +6,11 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-    title: {
-      fontSize: 35,
-      fontWeight: 'bold',
-    },
-    globalMargin: {
-      marginHorizontal: 20,
-    },
+  title: {
+    fontSize: 35,
+    fontWeight: 'bold',
+  },
+  globalMargin: {
+    marginHorizontal: 20,
+  },
 });
