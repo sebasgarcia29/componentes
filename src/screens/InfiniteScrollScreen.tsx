@@ -26,6 +26,11 @@ export const InfiniteScrollScreen = () => {
     return (
       <FadeInImage
         uri={uri}
+        style={{
+          width: '100%',
+          height: 400,
+          borderRadius: 8,
+        }}
       />
     );
   };
@@ -38,7 +43,7 @@ export const InfiniteScrollScreen = () => {
         renderItem={({ item }) => renderItem(item)}
         keyExtractor={(item) => item.toString()}
         ListHeaderComponent={() => (
-          <View style={{ marginHorizontal: 20, }}>
+          <View style={{ marginHorizontal: 20 }}>
             <Header title="InfiniteScroll" />
           </View>
         )}

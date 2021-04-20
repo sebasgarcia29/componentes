@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   TextInput,
@@ -14,6 +14,7 @@ import {
 import { } from 'react-native-gesture-handler';
 import { CustomSwitch } from '../components/CustomSwitch';
 import { Header } from '../components/Header';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 import { useForm } from '../hooks/useForm';
 import { styles } from '../theme/appTheme';
 
@@ -22,6 +23,9 @@ export const TextInputScreen = () => {
   const initialState = { name: '', email: '', phone: '', isSubscribed: false };
 
   const { onChange, form, isSubscribed } = useForm(initialState);
+
+  const { theme: { colors: { text, primary } } } = useContext(ThemeContext);
+
 
   return (
     <KeyboardAvoidingView
@@ -34,37 +38,39 @@ export const TextInputScreen = () => {
           <View style={styles.globalMargin}>
             <Header title={'TextInput'} />
             <TextInput
-              style={stylesInput.input}
+              style={{ ...stylesInput.input, borderColor: primary, borderWidth: 2, color: text }}
               onChangeText={(value) => onChange(value, 'name')}
               placeholder={'Nombre'}
               autoCorrect={false}
               autoCapitalize={'words'}
               keyboardType={'default'}
+              placeholderTextColor={text}
             />
             <TextInput
-              style={stylesInput.input}
+              style={{ ...stylesInput.input, borderColor: primary, borderWidth: 2, color: text }}
               onChangeText={(value) => onChange(value, 'email')}
               placeholder={'email'}
               autoCorrect={false}
               autoCapitalize={'none'}
               keyboardType={'email-address'}
               keyboardAppearance={'dark'}
+              placeholderTextColor={text}
             />
 
-            <Header title={JSON.stringify(form, null, 3)} />
-            <Header title={JSON.stringify(form, null, 3)} />
+            <Text style={{...stylesInput.switchText, color: text}}>{JSON.stringify(form, null, 3)}</Text>
 
 
             <TextInput
-              style={stylesInput.input}
+              style={{ ...stylesInput.input, borderColor: primary, borderWidth: 2, color: text }}
               onChangeText={(value) => onChange(value, 'phone')}
               placeholder={'Telefono'}
               autoCorrect={false}
               keyboardType={'numeric'}
+              placeholderTextColor={text}
             />
 
             <View style={stylesInput.switchRow}>
-              <Text style={stylesInput.switchText}>Suscribirse</Text>
+              <Text style={{...stylesInput.switchText, color: primary}}>Suscribirse</Text>
               <CustomSwitch isOn={isSubscribed} onChange={(value) => onChange(value, 'isSubscribed')} />
             </View>
 

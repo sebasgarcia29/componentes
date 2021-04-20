@@ -1,22 +1,25 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 import { styles } from '../theme/appTheme';
 
 interface Props {
   title: string
-  color?: string;
 }
 
 
-export const Header = ({ title = 'default', color = '#f84e1e' }: Props) => {
+export const Header = ({ title = 'default' }: Props) => {
 
   const { top } = useSafeAreaInsets();
 
+  const { theme: { colors: { text } } } = useContext(ThemeContext);
+
+
   return (
     <View style={{ marginTop: top + 20, marginBottom: 20 }} >
-      <Text style={{...styles.title, color}}> {title} </Text>
+      <Text style={{...styles.title, color: text}}> {title} </Text>
     </View>
   );
 };
